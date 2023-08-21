@@ -1,0 +1,20 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    margin-top: 10px 10px;
+    background-color: #CAFE48;
+    height: 30px;
+    padding: 15px;
+}
+
+a:link{
+    text-decoration: none!important;
+    color: #220C10;
+    font-size: large;
+    font-weight: 700;
+  }
+
+.right-links a {
+    padding: 10px;
+}
