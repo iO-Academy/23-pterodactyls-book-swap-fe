@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import Main from "./Main";
-import Nav from "./Nav";
+import Main from "./components/Main";
+import Nav from "./components/Nav";
 
 function App() {
   return (
