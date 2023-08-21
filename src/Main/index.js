@@ -1,5 +1,11 @@
+import { Route, Routes } from "react-router-dom";
+
 function Main() {
-  return <></>;
+  return (
+    <>
+      <Routes></Routes>
+    </>
+  );
 }
 
 export default Main;

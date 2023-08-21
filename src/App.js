@@ -1,3 +1,4 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Main from "./Main";
 import Nav from "./Nav";
@@ -5,8 +6,10 @@ import Nav from "./Nav";
 function App() {
   return (
     <div className="App">
-      <Main />
-      <Nav />
+      <BrowserRouter>
+        <Main />
+        <Nav />
+      </BrowserRouter>
     </div>
   );
 }
