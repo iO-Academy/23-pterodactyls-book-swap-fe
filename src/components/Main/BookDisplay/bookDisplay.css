@@ -1,0 +1,17 @@
+.flex_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    font-family: Raleway;
+}
+
+.card {
+    width: 280px;
+    background-color: #8783d1;
+    padding: 20px;
+}
+
+.book_image {
+    width: 250px;
+}
