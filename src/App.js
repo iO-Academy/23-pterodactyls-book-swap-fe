@@ -22,11 +22,10 @@ function App() {
 
           <Nav />
           <Main />
-       
-
+          
           <Routes>
             <Route path="/book/:id" element={<BookPage />}/>
-            <Main />
+          
 
           </Routes>
 
