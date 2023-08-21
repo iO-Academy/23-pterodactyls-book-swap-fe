@@ -26,7 +26,6 @@ function App() {
 
           <Routes>
             <Route path="/book/:id" element={<BookPage />}/>
-            <Main />
 
           </Routes>
 
