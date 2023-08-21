@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./book-page.css";
 import placeholder from "./placeholder.png";
+import BookClaimForm from "../BookClaimForm";
 
 function BookPage() {
   const [title, setTitle] = useState("");
@@ -59,6 +60,8 @@ function BookPage() {
           <p>
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
+
+          <BookClaimForm />
 
           <p>{blurb}</p>
           <ul>
