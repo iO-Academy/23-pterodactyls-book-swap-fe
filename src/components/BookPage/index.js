@@ -1,11 +1,12 @@
 import './book-page.css'
 import placeholder from './placeholder.png'
+import { useParams } from 'react-router-dom'
 
 
 function BookPage() {
 
-  const{id} = useParams
-  
+  const{id} = useParams 
+
   return(
 
     <div>
