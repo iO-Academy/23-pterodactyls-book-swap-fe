@@ -6,30 +6,16 @@ import BookContext from "./book-context";
 import BookPage from "./components/BookPage";
 
 function App() {
-
-
-
-  
   return (
     <div className="App">
       <BrowserRouter>
-        <BookContext.Provider value={{
-
-
-
-
-        }}>
-
+        <BookContext.Provider value={{}}>
           <Nav />
           <Main />
-       
 
           <Routes>
-            <Route path="/book/:id" element={<BookPage />}/>
-            <Main />
-
+            <Route path="/book/:id" element={<BookPage />} />
           </Routes>
-
         </BookContext.Provider>
       </BrowserRouter>
     </div>
