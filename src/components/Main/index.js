@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import BookDisplay from "./BookDisplay";
+import './main.css'
 
 function Main() {
   return (
-    <>
-      <h1>Book Swap</h1>
+    <div className="main_body">
       <BookDisplay />
-    </>
+    </div>
   );
 }
 

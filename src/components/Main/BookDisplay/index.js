@@ -17,9 +17,9 @@ function BookDisplay() {
                 {books.map((book, index) => (
                     <div key={index} className='card'>
                         <img src={book.image} className='book_image' />
-                        <p>{book.title}</p>
-                        <p>{book.author}</p>
-                        <p>{book.genre.name}</p>
+                        <p className='book_title'>{book.title}</p>
+                        <p className='book_author'>{book.author}</p>
+                        <p className='book_genre'>{book.genre.name}</p>
                     </div>
                 ))}
         </div>
