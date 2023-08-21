@@ -1,0 +1,13 @@
+.claim-form{
+    display: flex;
+    flex-direction: column;
+    background-color: #CAFE48;
+    padding: 10px;
+    gap: 10px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+}
+

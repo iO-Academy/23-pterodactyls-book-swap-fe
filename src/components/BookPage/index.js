@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./book-page.css";
-import placeholder from "./placeholder.png";
 import BookClaimForm from "../BookClaimForm";
 
 function BookPage() {
@@ -62,6 +61,7 @@ function BookPage() {
           </p>
 
           <BookClaimForm />
+
 
           <p>{blurb}</p>
           <ul>
