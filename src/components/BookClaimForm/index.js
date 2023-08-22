@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./book-claim-form.css";
 
 function BookClaimForm() {
   const [claimedBy, setClaimedBy] = useState("");
@@ -28,7 +29,36 @@ function BookClaimForm() {
     });
   }, []); // put the button event inside here
 
-  return <></>;
+  return (
+    <div>
+      <form className="claim-form">
+        <p className="heading">want to claim this book?</p>
+        <div className="input">
+          <label className="label" htmlFor="name">
+            Name
+          </label>
+          <input
+            className="input"
+            type="text"
+            id="name"
+            placeholder="Name"
+          ></input>
+        </div>
+        <div className="input">
+          <label className="label" htmlFor="user">
+            Email
+          </label>
+          <input
+            className="input"
+            type="text"
+            id="email"
+            placeholder="Email"
+          ></input>
+        </div>
+        <input className="claim-button" type="submit" value="Claim"></input>
+      </form>
+    </div>
+  );
 }
 
 export default BookClaimForm;

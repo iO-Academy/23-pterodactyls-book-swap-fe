@@ -11,10 +11,10 @@ function App() {
       <BrowserRouter>
         <BookContext.Provider value={{}}>
           <Nav />
-          <Main />
 
           <Routes>
             <Route path="/book/:id" element={<BookPage />} />
+            <Route path="/" element={<Main />} />
           </Routes>
         </BookContext.Provider>
       </BrowserRouter>
