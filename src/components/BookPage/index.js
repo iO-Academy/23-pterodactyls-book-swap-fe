@@ -34,6 +34,8 @@ function BookPage() {
         setImg(info.data.image);
         setClaimedBy(info.data.claimed_by_name);
 
+        
+
         const totalRating = reviews.reduce(
           (sum, review) => sum + review.rating,
           0
