@@ -3,7 +3,6 @@ import './book-claim-form.css'
 function BookClaimForm() {
   return (
 
-<div>
   <form className='claim-form'>
     <p className='heading'>want to claim this book?</p>
     <div className='input'>
@@ -16,7 +15,7 @@ function BookClaimForm() {
     </div>
     <input className="claim-button" type="submit" value="Claim"></input>
   </form>
-</div>
+  
   );
 }
 
