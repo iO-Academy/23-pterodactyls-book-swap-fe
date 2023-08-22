@@ -6,11 +6,22 @@ function BookClaimForm() {
   const [claimedBy, setClaimedBy] = useState("");
 
   const [name, setName] = useState("");
+  // collect email even though it is not used yet
   const [email, setEmail] = useState("");
 
   const { id } = useParams("");
 
-  useEffect(() => {
+  function handleName(event) {
+    setName(event.target.value);
+  }
+
+  function handelEmail(event) {
+    setEmail(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
     fetch("https://book-swap-api.dev.io-academy.uk/api/books/" + id, {
       method: "POST",
 
@@ -26,12 +37,16 @@ function BookClaimForm() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    });
-  }, []); // put the button event inside here
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
 
   return (
     <div>
-      <form className="claim-form">
+      <form className="claim-form" onSubmit={handleSubmit}>
         <p className="heading">want to claim this book?</p>
         <div className="input">
           <label className="label" htmlFor="name">
@@ -42,9 +57,10 @@ function BookClaimForm() {
             type="text"
             id="name"
             placeholder="Name"
+            onChange={handleName}
           ></input>
         </div>
-        <div className="input">
+        <div className="input" onChange={handelEmail}>
           <label className="label" htmlFor="user">
             Email
           </label>
