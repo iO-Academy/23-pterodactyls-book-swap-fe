@@ -17,6 +17,7 @@ function BookPage() {
   const [reviews, setReviews] = useState([]);
   const [reviewsNum, setReviewsNum] = useState(0);
   const [reviewsAvg, setReviewsAvg] = useState(0);
+  
 
   const { id } = useParams("");
 
@@ -34,7 +35,7 @@ function BookPage() {
         setImg(info.data.image);
         setClaimedBy(info.data.claimed_by_name);
 
-        
+
 
         const totalRating = reviews.reduce(
           (sum, review) => sum + review.rating,

@@ -37,7 +37,8 @@ function BookClaimForm(props) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+
+
       });
 
     props.setClaimedBy(name);
@@ -65,7 +66,7 @@ function BookClaimForm(props) {
           </label>
           <input
             className="input"
-            type="text"
+            type="email"
             id="email"
             placeholder="Email"
           ></input>
