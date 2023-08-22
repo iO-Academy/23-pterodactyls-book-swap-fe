@@ -5,16 +5,16 @@ function BookClaimForm() {
 
 <div>
   <form className='claim-form'>
-    <p>want to claim this book?</p>
+    <p className='heading'>want to claim this book?</p>
     <div className='input'>
-    <labe htmlFor="name">Name</labe>
-    <input type="text" id='name'></input>
+    <label className="label"  htmlFor="name">Name</label>
+    <input className='input' type="text" id='name' placeholder='Name'></input>
     </div>
     <div className='input'>
-    <labe htmlFor="user">Email</labe>
-    <input type="text" id="email"></input>
+    <label className="label" htmlFor="user">Email</label>
+    <input className='input' type="text" id="email" placeholder='Email'></input>
     </div>
-    <input type="submit" value="Claim"></input>
+    <input className="claim-button" type="submit" value="Claim"></input>
   </form>
 </div>
   );
