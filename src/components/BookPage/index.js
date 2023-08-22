@@ -13,7 +13,6 @@ function BookPage() {
   const [img, setImg] = useState("");
   const [claimed, setClaimed] = useState();
 
-
   const [reviews, setReviews] = useState([]);
   const [reviewsNum, setReviewsNum] = useState(0);
   const [reviewsAvg, setReviewsAvg] = useState(0);
@@ -32,7 +31,7 @@ function BookPage() {
         setBlurb(info.data.blurb);
         setReviews(info.data.reviews);
         setImg(info.data.image);
-        setClaimed(info.data.claimed_by_name)
+        setClaimed(info.data.claimed_by_name);
 
         const totalRating = reviews.reduce(
           (sum, review) => sum + review.rating,
@@ -63,7 +62,11 @@ function BookPage() {
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
 
-         {claimed == null ? <BookClaimForm /> : <p class="claimed">claimed by {claimed}</p>}
+          {claimed == null ? (
+            <BookClaimForm claimed={claimed} />
+          ) : (
+            <p class="claimed">claimed by {claimed}</p>
+          )}
 
           <p>{blurb}</p>
           <ul>
@@ -80,8 +83,7 @@ function BookPage() {
         </div>
       </div>
     </div>
-
-  )
+  );
 }
 
 export default BookPage;
