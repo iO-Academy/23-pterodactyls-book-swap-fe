@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./book-page.css";
 import BookClaimForm from "../BookClaimForm";
+import BookReturnForm from "../BookReturnForm";
 
 function BookPage() {
   const [title, setTitle] = useState("");
@@ -67,6 +68,8 @@ function BookPage() {
           ) : (
             <p class="claimed">claimed by {claimed}</p>
           )}
+
+          {claimed != null && <BookReturnForm />}
 
           <p>{blurb}</p>
           <ul>
