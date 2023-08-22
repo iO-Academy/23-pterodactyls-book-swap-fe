@@ -6,6 +6,8 @@ function BookClaimForm(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  const [errorMsg, setErrorMsg] = useState();
+
   const [claimed, setClaimed] = useState(false);
   const { id } = useParams("");
 
@@ -38,6 +40,9 @@ function BookClaimForm(props) {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+      })
+      .catch((error) => {
+        setErrorMsg(error);
       });
 
     props.setClaimedBy(name);
@@ -69,6 +74,9 @@ function BookClaimForm(props) {
             id="email"
             placeholder="Email"
           ></input>
+        </div>
+        <div>
+          <p className="error">{errorMsg}</p>
         </div>
         <input className="claim-button" type="submit" value="Claim"></input>
       </form>

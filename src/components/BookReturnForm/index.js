@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 function BookReturnForm() {
   const [email, setEmail] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const { id } = useParams("");
 
   function handleEmail(event) {
@@ -46,6 +47,10 @@ function BookReturnForm() {
           placeholder="Email"
           onChange={handleEmail}
         ></input>
+      </div>
+
+      <div>
+        <p className="error">{errorMsg}</p>
       </div>
       <input className="return-button" type="submit" value="Return"></input>
     </form>
