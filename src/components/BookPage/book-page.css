@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookpage{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 50px 150px;
+    align-items: start;
+    width: 1000px;
+    gap: 20px;
+}
+
+.right-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    align-content: start;
+
+}
+
+.lef-co{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    align-content: end;
+}
+
+p{
+    text-align: left;
+    margin: 5px 0;
+}
+
+h1{
+    text-align: left;
+    margin: 5px 0;
+}
+
