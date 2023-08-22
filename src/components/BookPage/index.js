@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./book-page.css";
 import BookClaimForm from "../BookClaimForm";
+import BookReturnForm from "../BookReturnForm";
 
 function BookPage() {
   const [title, setTitle] = useState("");
@@ -12,7 +13,6 @@ function BookPage() {
   const [blurb, setBlurb] = useState("");
   const [img, setImg] = useState("");
   const [claimed, setClaimed] = useState();
-
 
   const [reviews, setReviews] = useState([]);
   const [reviewsNum, setReviewsNum] = useState(0);
@@ -32,7 +32,7 @@ function BookPage() {
         setBlurb(info.data.blurb);
         setReviews(info.data.reviews);
         setImg(info.data.image);
-        setClaimed(info.data.claimed_by_name)
+        setClaimed(info.data.claimed_by_name);
 
         const totalRating = reviews.reduce(
           (sum, review) => sum + review.rating,
@@ -63,7 +63,13 @@ function BookPage() {
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
 
-         {claimed == null ? <BookClaimForm /> : <p class="claimed">claimed by {claimed}</p>}
+          {claimed == null ? (
+            <BookClaimForm claimed={claimed} />
+          ) : (
+            <p class="claimed">claimed by {claimed}</p>
+          )}
+
+          {claimed != null && <BookReturnForm />}
 
           <p>{blurb}</p>
           <ul>
@@ -80,8 +86,7 @@ function BookPage() {
         </div>
       </div>
     </div>
-
-  )
+  );
 }
 
 export default BookPage;
