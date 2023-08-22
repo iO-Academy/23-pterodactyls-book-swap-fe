@@ -64,9 +64,9 @@ function BookPage() {
           </p>
 
           {claimedBy == null ? (
-            <BookClaimForm claimedBy={claimedBy } setClaimedBy={setClaimedBy} />
+            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />
           ) : (
-            <p class="claimed">claimed by {claimedBy}</p>
+            <p className="claimed">claimed by {claimedBy}</p>
           )}
 
           {claimedBy != null && <BookReturnForm />}

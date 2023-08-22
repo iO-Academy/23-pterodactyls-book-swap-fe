@@ -13,11 +13,10 @@ function BookClaimForm(props) {
     setName(event.target.value);
   }
 
-  function handelEmail(event) {
+  function handleEmail(event) {
     setEmail(event.target.value);
   }
 
-  
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -41,10 +40,8 @@ function BookClaimForm(props) {
         console.log(data);
       });
 
-    props.setClaimedBy(name)
-  }  
-
-
+    props.setClaimedBy(name);
+  }
 
   return (
     <div>
@@ -62,7 +59,7 @@ function BookClaimForm(props) {
             onChange={handleName}
           ></input>
         </div>
-        <div className="input" onChange={handelEmail}>
+        <div className="input" onChange={handleEmail}>
           <label className="label" htmlFor="user">
             Email
           </label>
