@@ -12,7 +12,7 @@ function BookPage() {
   const [genre, setGenre] = useState("");
   const [blurb, setBlurb] = useState("");
   const [img, setImg] = useState("");
-  const [claimed, setClaimed] = useState();
+  const [claimedBy, setClaimedBy] = useState();
 
   const [reviews, setReviews] = useState([]);
   const [reviewsNum, setReviewsNum] = useState(0);
@@ -32,7 +32,7 @@ function BookPage() {
         setBlurb(info.data.blurb);
         setReviews(info.data.reviews);
         setImg(info.data.image);
-        setClaimed(info.data.claimed_by_name);
+        setClaimedBy(info.data.claimed_by_name);
 
         const totalRating = reviews.reduce(
           (sum, review) => sum + review.rating,
@@ -63,13 +63,13 @@ function BookPage() {
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
 
-          {claimed == null ? (
-            <BookClaimForm claimed={claimed} />
+          {claimedBy == null ? (
+            <BookClaimForm claimedBy={claimedBy } setClaimedBy={setClaimedBy} />
           ) : (
-            <p class="claimed">claimed by {claimed}</p>
+            <p class="claimed">claimed by {claimedBy}</p>
           )}
 
-          {claimed != null && <BookReturnForm />}
+          {claimedBy != null && <BookReturnForm />}
 
           <p>{blurb}</p>
           <ul>

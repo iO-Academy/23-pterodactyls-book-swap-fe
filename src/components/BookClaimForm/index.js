@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./book-claim-form.css";
 
-function BookClaimForm() {
+function BookClaimForm(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -16,6 +16,8 @@ function BookClaimForm() {
   function handelEmail(event) {
     setEmail(event.target.value);
   }
+
+  
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -39,8 +41,10 @@ function BookClaimForm() {
         console.log(data);
       });
 
-    setClaimed(true);
-  }
+    props.setClaimedBy(name)
+  }  
+
+
 
   return (
     <div>
