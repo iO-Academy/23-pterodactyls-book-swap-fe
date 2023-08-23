@@ -5,8 +5,8 @@ function Nav() {
     <nav className="navBar">
       <a href='/'>Books Swap</a>
       <div className="right-links">
-      <a href='#'>Available books</a>
-      <a href='#'>Claim books</a>
+      <a href='/'>Available books</a>
+      <a href='/claimed'>Claimed books</a>
       <a href='#'>Add book</a>
       </div>
     </nav>
