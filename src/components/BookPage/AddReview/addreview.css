@@ -1,32 +1,44 @@
+.review-title {
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+
 .review-form{
     background-color: #CAFE48;
     padding: 15px;
-    width: 300px;
+    width: 260px;
     display: flex;
     flex-direction: column;
 }
 
 #review{
     height:100px;
-    margin-top: 5px;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
 }
 
 #rating{
     margin-bottom: 5px;
-    margin-top: 5px;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
 }
 
 #name{
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
+    padding: 10px;
+    border: none;
 }
 
 .submit{
-    background-color: #8783D1;
-    max-width: 140px;
-    margin-top: 5px;
+    
+    background-color: #CAFE48;
+    color: #220C10;
+    padding: 10px 90px;
+    font-size: 1.2rem;
+    border: solid #220C10 2px;
     align-self: center;
-    font-size: 16px;
-    padding: 5px;
-    font-weight: 600;
+    margin-top: 15px;
 }
