@@ -56,11 +56,11 @@ function BookClaimForm(props) {
           ></input>
         </div>
         <div className="input" onChange={handleEmail}>
-          <label className="label" htmlFor="user">
+          <label className="label" htmlFor="email">
             Email
           </label>
           <input
-            className="email"
+            className="input"
             type="email"
             id="email"
             placeholder="Email"
