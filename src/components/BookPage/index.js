@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./book-page.css";
 import BookClaimForm from "../BookClaimForm";
+import AddReview from "./AddReview"
 
 function BookPage() {
   const [title, setTitle] = useState("");
@@ -66,6 +67,7 @@ function BookPage() {
          {claimed == null ? <BookClaimForm /> : <p class="claimed">claimed by {claimed}</p>}
 
           <p>{blurb}</p>
+          <AddReview id={id}/>
           <ul>
             {reviews.map((review, index) => (
               <li key={index}>
