@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./book-claim-form.css";
 
 function BookClaimForm(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState('')
+  const [nameErrorMessage, setNameErrorMessage] = useState('')
 
-  const [claimed, setClaimed] = useState(false);
   const { id } = useParams("");
 
   function handleName(event) {
@@ -38,10 +39,16 @@ function BookClaimForm(props) {
       .then((res) => res.json())
       .then((data) => {
 
+        if(data.errors){
+
+          setEmailErrorMessage(data.errors.email)
+          setNameErrorMessage(data.errors.name)
+        } else{
+          props.setClaimedBy(name)
+        }
 
       });
-
-    props.setClaimedBy(name);
+        
   }
 
   return (
@@ -61,7 +68,7 @@ function BookClaimForm(props) {
           ></input>
         </div>
         <div className="input" onChange={handleEmail}>
-          <label className="label" htmlFor="user">
+          <label className="label" htmlFor="email">
             Email
           </label>
           <input
@@ -72,6 +79,12 @@ function BookClaimForm(props) {
           ></input>
         </div>
         <input className="claim-button" type="submit" value="Claim"></input>
+
+    
+          <p className="error">{emailErrorMessage}</p>
+
+          <p className="error">{nameErrorMessage}</p>
+        
       </form>
     </div>
   );
