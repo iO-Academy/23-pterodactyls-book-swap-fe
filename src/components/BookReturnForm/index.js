@@ -48,7 +48,7 @@ function BookReturnForm() {
           id="email"
           placeholder="Email"
           onChange={handleEmail}
-        ></input>
+        />
       </div>
       <input className="return-button" type="submit" value="Return"></input>
       <p className="error">{errorMessage}</p>
