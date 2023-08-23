@@ -4,18 +4,9 @@ import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import BookPage from "./components/BookPage";
 import ClaimedBooks from "./components/ClaimedBooks";
-import { useEffect, useState } from "react";
 
 function App() {
-  const [books, setBooks] = useState([])
-  useEffect(() => {
-      fetch('https://book-swap-api.dev.io-academy.uk/api/books')
-          .then(res => res.json())
-          .then(bookData => {
-              setBooks(bookData.data)
-              
-          })
-  }, [])
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,8 +15,8 @@ function App() {
 
           <Routes>
             <Route path="/book/:id" element={<BookPage />} />
-            <Route path="/" element={<HomePage books={books} />} />
-            <Route path="/claimed/" element={<ClaimedBooks books={books} />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/claimed/" element={<ClaimedBooks />} />
           </Routes>
       </BrowserRouter>
     </div>
