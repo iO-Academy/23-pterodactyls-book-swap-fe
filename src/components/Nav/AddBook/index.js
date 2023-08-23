@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./add-book.css";
 
 function AddBook() {
   const [title, setTitle] = useState("");
@@ -12,51 +13,45 @@ function AddBook() {
   const [titleErrors, setTitleErrors] = useState("");
   const [authorErrors, setAuthorErrors] = useState("");
   const [genreErrors, setGenreErrors] = useState("");
-  const [yearErrors, setYearErrors] = useState("");
-  const [pageCountErrors, setPageCountErrors] = useState("");
-  const [imgUrlErrors, setImgUrlErrors] = useState("");
-  const [blurbErrors, setBlurbErrors] = useState("");
 
   function changeTitle(event) {
-    setTitle(event.title.value);
+    setTitle(event.target.value);
   }
   function changeAuthor(event) {
-    setAuthor(event.title.value);
+    setAuthor(event.target.value);
   }
   function changeGenre(event) {
-    setGenre(event.title.value);
+    setGenre(event.target.value);
   }
   function changeYear(event) {
-    setYear(event.title.value);
+    setYear(event.target.value);
   }
   function changePageCount(event) {
-    setPageCount(event.title.value);
+    setPageCount(event.target.value);
   }
   function changeImgUrl(event) {
-    setImgUrl(event.title.value);
+    setImgUrl(event.target.value);
   }
   function changeBlurb(event) {
-    setBlurb(event.title.value);
+    setBlurb(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch("https://book-swap-api.dev.io-academy.uk/api/books/", {
-      method: "PUT",
+    fetch("https://book-swap-api.dev.io-academy.uk/api/books", {
+      method: "POST",
 
       // putting data into json
       body: JSON.stringify({
-        "data": {
-          "title": title,
-          "author": author,
-          "blurb": blurb,
-          "image": imgUrl,
-          "page_count": pageCount,
-          "claimed_by_name": null,
-          "year": year,
-          "genre": { "name": genre },
-          "reviews": [{}],
-        },
+        "title": title,
+        "author": author,
+        "genre_id": genre,
+        // optional
+        "blurb": blurb,
+        "image": imgUrl,
+        "year": year,
+        "page_count": pageCount,
+        "claimed_by_name": null,
       }),
       mode: "cors",
       // Telling the API that we're sending JSON, and we want JSON back
@@ -69,18 +64,16 @@ function AddBook() {
       .then((data) => {
         setTitleErrors(data.errors.title);
         setAuthorErrors(data.errors.author);
-        setBlurbErrors(data.errors.blurb);
-        setImgUrlErrors(data.errors.image);
-        setPageCountErrors(data.errors.page_count);
-        setYearErrors(data.errors.year);
-        setGenreErrors(data.errors.genre);
+        setGenreErrors(data.errors.genre_id);
+        console.log(data);
       });
+    console.log("sucessfully submitted book!");
   }
 
   return (
-    <form className={form} onSubmit={handleSubmit}>
-      <div>
-        <label for="title">Title (required)</label>
+    <form className="addform" onSubmit={handleSubmit}>
+      <div className="field">
+        <label htmlFor="title">Title (required)</label>
         <input
           type="input"
           name="title"
@@ -88,8 +81,8 @@ function AddBook() {
           onChange={changeTitle}
         />
       </div>
-      <div>
-        <label for="author">Author (required)</label>
+      <div className="field">
+        <label htmlFor="author">Author (required)</label>
         <input
           type="input"
           name="author"
@@ -97,8 +90,8 @@ function AddBook() {
           onChange={changeAuthor}
         />
       </div>
-      <div>
-        <label for="genre">Genre (required)</label>
+      <div className="field">
+        <label htmlFor="genre">Genre (required)</label>
         <select
           type="input"
           name="genre"
@@ -106,14 +99,14 @@ function AddBook() {
           onChange={changeGenre}
         >
           <option value="">Select an option</option>
-          <option value="Option 1">Nesciunt omnis</option>
-          <option value="Option 2">Voluptas ducimus</option>
-          <option value="Option 3">Qui inventore</option>
-          <option value="Option 4">Sed corporis</option>
+          <option value="1">Nesciunt omnis</option>
+          <option value="2">Voluptas ducimus</option>
+          <option value="3">Qui inventore</option>
+          <option value="4">Sed corporis</option>
         </select>
       </div>
-      <div>
-        <label for="year">Year</label>
+      <div className="field">
+        <label htmlFor="year">Year</label>
         <input
           type="input"
           name="year"
@@ -121,8 +114,8 @@ function AddBook() {
           onChange={changeYear}
         />
       </div>
-      <div>
-        <label for="page-count">Page Count</label>
+      <div className="field">
+        <label htmlFor="page-count">Page Count</label>
         <input
           type="input"
           name="page-count"
@@ -130,8 +123,8 @@ function AddBook() {
           onChange={changePageCount}
         />
       </div>
-      <div>
-        <label for="img-url">Image URL</label>
+      <div className="field">
+        <label htmlFor="img-url">Image URL</label>
         <input
           type="input"
           name="img-url"
@@ -139,22 +132,21 @@ function AddBook() {
           onChange={changeImgUrl}
         />
       </div>
-      <div>
-        <textarea placeholder="Blurb" rows="4" cols="50" onChange={changeBlurb}>
-          Blurb
-        </textarea>
+      <div className="field">
+        <textarea
+          placeholder="Blurb"
+          rows="4"
+          cols="50"
+          onChange={changeBlurb}
+        ></textarea>
       </div>
-      <div>
+      <div className="field">
         <button className="submit-button">Add book</button>
       </div>
       <div className="errors">
         <p>{titleErrors}</p>
         <p>{authorErrors}</p>
         <p>{genreErrors}</p>
-        <p>{yearErrors}</p>
-        <p>{pageCountErrors}</p>
-        <p>{imgUrlErrors}</p>
-        <p>{blurbErrors}</p>
       </div>
     </form>
   );
