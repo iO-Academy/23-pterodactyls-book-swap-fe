@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./book-page.css";
 import BookClaimForm from "../BookClaimForm";
+import BookReturnForm from "../BookReturnForm";
 import AddReview from "./AddReview"
 
 function BookPage() {
@@ -12,8 +13,7 @@ function BookPage() {
   const [genre, setGenre] = useState("");
   const [blurb, setBlurb] = useState("");
   const [img, setImg] = useState("");
-  const [claimed, setClaimed] = useState();
-
+  const [claimedBy, setClaimedBy] = useState();
 
   const [reviews, setReviews] = useState([]);
   const [reviewsNum, setReviewsNum] = useState(0);
@@ -33,19 +33,21 @@ function BookPage() {
         setBlurb(info.data.blurb);
         setReviews(info.data.reviews);
         setImg(info.data.image);
-        setClaimed(info.data.claimed_by_name)
+        setClaimedBy(info.data.claimed_by_name);
 
-        const totalRating = reviews.reduce(
+        const totalRating = info.data.reviews.reduce(
           (sum, review) => sum + review.rating,
           0
         );
 
-        setReviewsAvg((totalRating / reviews.length || 0).toPrecision(2)); // avoid dividing by zero
-        setReviewsNum(reviews.length);
-        console.log(reviews.length);
+        setReviewsAvg(
+          (totalRating / info.data.reviews.length || 0).toPrecision(2)
+        ); // avoid dividing by zero
+        setReviewsNum(info.data.reviews.length);
+        console.log(info.data.reviews.length);
       })
       .catch((error) => console.error("Error fetching data", error));
-  }, [id, reviewsAvg]);
+  }, [id]);
 
   return (
     <div className="container">
@@ -64,7 +66,15 @@ function BookPage() {
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
 
-         {claimed == null ? <BookClaimForm /> : <p class="claimed">claimed by {claimed}</p>}
+          {claimedBy == null ? 
+            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />: 
+            <>
+            <p className="claimed">claimed by {claimedBy}</p>
+            <BookReturnForm />
+            </>
+          }
+
+         
 
           <p>{blurb}</p>
           <AddReview id={id}/>
@@ -82,8 +92,7 @@ function BookPage() {
         </div>
       </div>
     </div>
-
-  )
+  );
 }
 
 export default BookPage;

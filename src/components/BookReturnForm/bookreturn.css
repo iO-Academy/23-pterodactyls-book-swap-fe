@@ -1,4 +1,4 @@
-.claim-form{
+.return-form{
     display: flex;
     flex-direction: column;
     background-color: #CAFE48;
@@ -16,7 +16,7 @@
     font-weight: 500;
 }
 
-.claim-button{
+.return-button{
     background-color: #CAFE48;
     color: #220C10;
     padding: 10px 0px;
@@ -24,7 +24,7 @@
     border: solid #220C10 2px;
 }
 
-.claim-button:hover{
+.return-button:hover{
     background-color: #220C10;
     color: #CAFE48;
     padding: 10px 0px;
