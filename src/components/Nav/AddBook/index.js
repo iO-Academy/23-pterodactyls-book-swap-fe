@@ -1,14 +1,17 @@
 import { useState } from "react";
 import "./add-book.css";
+import { Navigate } from "react-router-dom";
 
 function AddBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState(0);
   const [pageCount, setPageCount] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [blurb, setBlurb] = useState("");
+
+  const [redirect, setRedirect] = useState(false);
 
   const [titleErrors, setTitleErrors] = useState("");
   const [authorErrors, setAuthorErrors] = useState("");
@@ -38,21 +41,34 @@ function AddBook() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    const postData = {
+      "title": title,
+      "author": author,
+      "genre_id": genre,
+    };
+
+    if (blurb.length != 0) {
+      postData.blurb = blurb;
+    }
+
+    if (imgUrl.length != 0) {
+      postData.image = imgUrl;
+    }
+
+    if (year != 0) {
+      postData.year = year;
+    }
+
+    if (pageCount != 0) {
+      postData.page_count = pageCount;
+    }
+
     fetch("https://book-swap-api.dev.io-academy.uk/api/books", {
       method: "POST",
 
       // putting data into json
-      body: JSON.stringify({
-        "title": title,
-        "author": author,
-        "genre_id": genre,
-        // optional
-        "blurb": blurb,
-        "image": imgUrl,
-        "year": year,
-        "page_count": pageCount,
-        "claimed_by_name": null,
-      }),
+      body: JSON.stringify(postData),
       mode: "cors",
       // Telling the API that we're sending JSON, and we want JSON back
       headers: {
@@ -62,11 +78,15 @@ function AddBook() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setTitleErrors(data.errors.title);
-        setAuthorErrors(data.errors.author);
-        setGenreErrors(data.errors.genre_id);
-        console.log(data);
+        if (data.errors) {
+          setTitleErrors(data.errors.title);
+          setAuthorErrors(data.errors.author);
+          setGenreErrors(data.errors.genre_id);
+          console.log(data);
+        }
+        setRedirect(true);
       });
+
     console.log("sucessfully submitted book!");
   }
 
@@ -148,6 +168,8 @@ function AddBook() {
         <p>{authorErrors}</p>
         <p>{genreErrors}</p>
       </div>
+
+      {redirect && <Navigate replace to="/" />}
     </form>
   );
 }
