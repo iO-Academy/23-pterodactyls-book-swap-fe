@@ -3,7 +3,7 @@ import "./bookreturn.css";
 import { useParams } from "react-router-dom";
 
 function BookReturnForm() {
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [email, setEmail] = useState("");
   const { id } = useParams("");
@@ -30,9 +30,8 @@ function BookReturnForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-       
-        setErrorMessage(data.message)
-        console.log(errorMessage)
+        setErrorMessage(data.message);
+        console.log(errorMessage);
       });
   }
 
