@@ -38,8 +38,30 @@ function Form(props) {
     }
 
     if (isValid) {
-      fetch().then().then();
+      fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
+        method: "POST",
+        body: JSON.stringify({
+          name: `${name}`,
+          rating: rating,
+          review: `${review}`,
+          book_id: id,
+        }),
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setName("");
+          setRating(0);
+          setReview("");
+          setReviewCharCount(0)
+      });
     }
+    
 
     fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
       method: "POST",
@@ -99,7 +121,7 @@ function Form(props) {
       <textarea
         id="review"
         value={review}
-        onChange={handleReviewChange} 
+        onChange={handleReviewChange}
       />
       <div className="char-count">
         {reviewCharCount} / {maxReviewLength} characters
