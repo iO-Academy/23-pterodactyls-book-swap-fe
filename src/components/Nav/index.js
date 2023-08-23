@@ -1,18 +1,16 @@
-import { Link } from "react-router-dom";
-import "./nav.css"
+import "./nav.css";
 
 function Nav() {
   return (
     <nav className="navBar">
-      <Link to='/'>Books Swap</Link>
+      <a href="/">Books Swap</a>
       <div className="right-links">
-      <Link to='/'>Available books</Link>
-      <Link to='/claimed'>Claimed books</Link>
-      {/* <Link to='#'>Add book</Link> */}
+        <a href="#">Available books</a>
+        <a href="/claimed">Claim books</a>
+        <a href="/add-book">Add book</a>
       </div>
     </nav>
-
-  )
+  );
 }
 
 export default Nav;

@@ -1,0 +1,44 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.addform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 60px auto;
+  background-color: #cafe48;
+  padding: 30px 30px;
+  width: 70vw;
+}
+
+input {
+  padding: 7px 0;
+}
+
+input::placeholder {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.submit-button {
+  margin: 0 auto;
+  width: 100%;
+  padding: 7px 0;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.errors p {
+  color: red;
+}
