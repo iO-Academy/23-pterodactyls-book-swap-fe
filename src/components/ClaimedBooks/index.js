@@ -1,15 +1,22 @@
+import { Link } from 'react-router-dom'
+import './claimedBooks.css'
 import { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom";
-import './bookDisplay.css'
-import { Link } from 'react-router-dom';
-import ClaimedBooks from '../ClaimedBooks';
 
+function ClaimedBooks() {
+    const [claimedBooks, setClaimedBooks] = useState([]);
 
-function BookDisplay(props) {
+    useEffect(() => {
+        fetch('https://book-swap-api.dev.io-academy.uk/api/books?claimed=1')
+        .then(res => res.json())
+        .then(data => {
+            setClaimedBooks(data.data);
+            })
+    }, []);
+    console.log(claimedBooks)
     
     return (
         <div className='flex_container'>
-            {props.books.map((book, index) => (
+            {claimedBooks.map((book, index) => (
                 <Link key={index} to={`/Book/${book.id}`}>
                     <div className='card'>
                         <img src={book.image} alt={book.title} className='book_image' />
@@ -22,8 +29,7 @@ function BookDisplay(props) {
                 </Link>
             ))}
         </div>
-    )
-
+    );
 }
 
-export default BookDisplay
+export default ClaimedBooks
