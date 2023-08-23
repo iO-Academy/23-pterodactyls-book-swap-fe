@@ -8,7 +8,7 @@ function Nav() {
       <div className="right-links">
       <Link to='/'>Available books</Link>
       <Link to='/claimed'>Claimed books</Link>
-      <Link to='#'>Add book</Link>
+      {/* <Link to='#'>Add book</Link> */}
       </div>
     </nav>
 

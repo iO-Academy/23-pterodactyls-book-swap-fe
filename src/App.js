@@ -3,7 +3,7 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import BookPage from "./components/BookPage";
-import ClaimedBooks from "./components/ClaimedBooks";
+import ClaimedBookPage from "./components/ClaimedBookPage";
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/book/:id" element={<BookPage />} />
             <Route path="/" element={<HomePage />} />
-            <Route path="/claimed/" element={<ClaimedBooks />} />
+            <Route path="/claimed/" element={<ClaimedBookPage />} />
           </Routes>
       </BrowserRouter>
     </div>
