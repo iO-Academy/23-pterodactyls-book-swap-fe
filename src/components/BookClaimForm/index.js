@@ -60,7 +60,7 @@ function BookClaimForm(props) {
             Email
           </label>
           <input
-            className="input"
+            className="email"
             type="email"
             id="email"
             placeholder="Email"
