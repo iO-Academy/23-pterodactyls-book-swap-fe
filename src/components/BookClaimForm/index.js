@@ -5,8 +5,6 @@ import "./book-claim-form.css";
 function BookClaimForm(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
-  const [claimed, setClaimed] = useState(false);
   const { id } = useParams("");
 
   function handleName(event) {
@@ -36,10 +34,7 @@ function BookClaimForm(props) {
       },
     })
       .then((res) => res.json())
-      .then((data) => {
-
-
-      });
+      .then((data) => {});
 
     props.setClaimedBy(name);
   }
