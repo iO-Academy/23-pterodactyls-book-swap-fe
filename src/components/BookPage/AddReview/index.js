@@ -75,7 +75,7 @@ function Form(props) {
   return (
     <form className="review-form" onSubmit={handleSubmit}>
       <p className="review-title">Please leave a review!</p>
-      <label htmlFor="name">Name</label>
+      <label className='label-names' htmlFor="name">Name</label>
       <input
         placeholder="Name"
         id="name"
@@ -85,7 +85,7 @@ function Form(props) {
       />
       <div className="error-message">{nameError}</div>
 
-      <label htmlFor="rating">Rating (out of 5)</label>
+      <label className='label-names' htmlFor="rating">Rating (out of 5)</label>
       <input
         id="rating"
         type="number"
@@ -95,7 +95,7 @@ function Form(props) {
         onChange={changeRating}
       />
 
-      <label htmlFor="review">Review</label>
+      <label className='label-names' htmlFor="review">Review</label>
       <textarea
         id="review"
         value={review}
