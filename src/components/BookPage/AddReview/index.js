@@ -3,7 +3,7 @@ import "./addreview.css";
 
 function Form(props) {
   const [name, setName] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [nameError, setNameError] = useState("");
   const [ratingError, setRatingError] = useState("");
@@ -32,6 +32,11 @@ function Form(props) {
       isValid = false;
     }
 
+    if (rating === "") {
+      setRatingError("Rating is required");
+      isValid = false;
+    }
+
     if (review.trim() === "") {
       setReviewError("Review is required");
       isValid = false;
@@ -56,40 +61,15 @@ function Form(props) {
       .then((data) => {
         console.log(data);
         setName("");
-          setRating(0);
-          setReview("");
-          setReviewCharCount(0)
+        setRating("");
+        setReview("");
+        setReviewCharCount(0)
       });
     }
-    
-
-    fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
-      method: "POST",
-      body: JSON.stringify({
-        name: `${name}`,
-        rating: rating,
-        review: `${review}`,
-        book_id: id,
-      }),
-
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
   }
 
   function changeName(event) {
     setName(event.target.value);
-  }
-
-  function changeRating(event) {
-    setRating(event.target.value);
   }
 
   const id = props.id;
@@ -111,11 +91,12 @@ function Form(props) {
       <input
         id="rating"
         type="number"
-        min="0"
+        min="1"
         max="5"
         value={rating}
-        onChange={changeRating}
+        onChange={(e) => setRating(e.target.value)}
       />
+      <div className="error-message">{ratingError}</div> 
 
       <label className='label-names' htmlFor="review">Review</label>
       <textarea
@@ -133,4 +114,3 @@ function Form(props) {
 }
 
 export default Form;
-
