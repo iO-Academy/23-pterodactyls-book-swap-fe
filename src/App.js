@@ -1,22 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Main from "./components/Main";
+import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
-import BookContext from "./book-context";
 import BookPage from "./components/BookPage";
+import ClaimedBookPage from "./components/ClaimedBookPage";
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
-        <BookContext.Provider value={{}}>
+       
           <Nav />
 
           <Routes>
             <Route path="/book/:id" element={<BookPage />} />
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/claimed/" element={<ClaimedBookPage />} />
           </Routes>
-        </BookContext.Provider>
       </BrowserRouter>
     </div>
   );

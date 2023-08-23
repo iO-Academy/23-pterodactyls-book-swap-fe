@@ -17,7 +17,6 @@ function BookPage() {
   const [reviews, setReviews] = useState([]);
   const [reviewsNum, setReviewsNum] = useState(0);
   const [reviewsAvg, setReviewsAvg] = useState(0);
-  
 
   const { id } = useParams("");
 
@@ -35,19 +34,19 @@ function BookPage() {
         setImg(info.data.image);
         setClaimedBy(info.data.claimed_by_name);
 
-
-
-        const totalRating = reviews.reduce(
+        const totalRating = info.data.reviews.reduce(
           (sum, review) => sum + review.rating,
           0
         );
 
-        setReviewsAvg((totalRating / reviews.length || 0).toPrecision(2)); // avoid dividing by zero
-        setReviewsNum(reviews.length);
-        console.log(reviews.length);
+        setReviewsAvg(
+          (totalRating / info.data.reviews.length || 0).toPrecision(2)
+        ); // avoid dividing by zero
+        setReviewsNum(info.data.reviews.length);
+        console.log(info.data.reviews.length);
       })
       .catch((error) => console.error("Error fetching data", error));
-  }, [id, reviewsAvg]);
+  }, [id]);
 
   return (
     <div className="container">
@@ -66,13 +65,15 @@ function BookPage() {
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
 
-          {claimedBy == null ? (
-            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />
-          ) : (
+          {claimedBy == null ? 
+            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />: 
+            <>
             <p className="claimed">claimed by {claimedBy}</p>
-          )}
+            <BookReturnForm />
+            </>
+          }
 
-          {claimedBy != null && <BookReturnForm />}
+         
 
           <p>{blurb}</p>
           <ul>

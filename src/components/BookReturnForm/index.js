@@ -3,7 +3,7 @@ import "./bookreturn.css";
 import { useParams } from "react-router-dom";
 
 function BookReturnForm() {
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [email, setEmail] = useState("");
   const { id } = useParams("");
@@ -32,7 +32,6 @@ function BookReturnForm() {
       .then((data) => {
        
         setErrorMessage(data.message)
-        console.log(errorMessage)
       });
   }
 
@@ -40,16 +39,16 @@ function BookReturnForm() {
     <form className="return-form" onSubmit={handleSubmit}>
       <p className="heading">want to return this book?</p>
       <div className="input">
-        <label className="label" htmlFor="user">
+        <label className="label" htmlFor="email">
           Email
         </label>
         <input
           className="input"
-          type="text"
+          type="email"
           id="email"
           placeholder="Email"
           onChange={handleEmail}
-        ></input>
+        />
       </div>
       <input className="return-button" type="submit" value="Return"></input>
       <p className="error">{errorMessage}</p>
