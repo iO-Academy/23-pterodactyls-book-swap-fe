@@ -1,0 +1,23 @@
+div {
+  padding: 5px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit-button {
+  margin: 0 auto;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+}
+
+.errors p {
+  color: red;
+}
