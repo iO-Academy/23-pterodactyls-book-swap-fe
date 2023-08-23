@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import BookCard from '../BookCard';
 
-function ClaimedBooks() {
+function ClaimedBookPage() {
     const [claimedBooks, setClaimedBooks] = useState([]);
 
     useEffect(() => {
@@ -19,4 +18,4 @@ function ClaimedBooks() {
     );
 }
 
-export default ClaimedBooks
+export default ClaimedBookPage
