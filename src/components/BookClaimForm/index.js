@@ -5,6 +5,9 @@ import "./book-claim-form.css";
 function BookClaimForm(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [emailErrorMessage, setEmailErrorMessage] = useState('')
+  const [nameErrorMessage, setNameErrorMessage] = useState('')
+
   const { id } = useParams("");
 
   function handleName(event) {
@@ -34,9 +37,18 @@ function BookClaimForm(props) {
       },
     })
       .then((res) => res.json())
-      .then((data) => {});
+      .then((data) => {
 
-    props.setClaimedBy(name);
+        if(data.errors){
+
+          setEmailErrorMessage(data.errors.email)
+          setNameErrorMessage(data.errors.name)
+        } else{
+          props.setClaimedBy(name)
+        }
+
+      });
+        
   }
 
   return (
@@ -67,6 +79,12 @@ function BookClaimForm(props) {
           ></input>
         </div>
         <input className="claim-button" type="submit" value="Claim"></input>
+
+    
+          <p className="error">{emailErrorMessage}</p>
+
+          <p className="error">{nameErrorMessage}</p>
+        
       </form>
     </div>
   );

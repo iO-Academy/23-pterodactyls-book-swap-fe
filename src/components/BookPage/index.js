@@ -65,13 +65,15 @@ function BookPage() {
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
 
-          {claimedBy == null ? (
-            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />
-          ) : (
+          {claimedBy == null ? 
+            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />: 
+            <>
             <p className="claimed">claimed by {claimedBy}</p>
-          )}
+            <BookReturnForm />
+            </>
+          }
 
-          {claimedBy != null && <BookReturnForm />}
+         
 
           <p>{blurb}</p>
           <ul>

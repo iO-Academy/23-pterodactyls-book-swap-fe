@@ -30,8 +30,8 @@ function BookReturnForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setErrorMessage(data.message);
-        console.log(errorMessage);
+       
+        setErrorMessage(data.message)
       });
   }
 
@@ -44,7 +44,7 @@ function BookReturnForm() {
         </label>
         <input
           className="input"
-          type="text"
+          type="email"
           id="email"
           placeholder="Email"
           onChange={handleEmail}
