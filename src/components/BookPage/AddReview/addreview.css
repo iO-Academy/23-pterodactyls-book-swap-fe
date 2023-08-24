@@ -1,68 +1,66 @@
 .review-form {
-    display: flex;
-    flex-direction: column;
-    background-color: #CAFE48;
-    padding: 20px;
-    gap: 10px;
-    margin: 20px 0;
-    width: 225px;
+  display: flex;
+  flex-direction: column;
+  background-color: #cafe48;
+  padding: 20px;
+  gap: 10px;
+  margin: 20px 0;
+  width: 450px;
 }
 
 .review-title {
-    font-weight: 600;
-    padding-bottom: 15px;
-    text-align: center;
+  font-weight: 600;
+  padding-bottom: 15px;
+  text-align: center;
 }
 
 #rating {
-    padding: 10px;
-    border: none;
-    margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  margin-bottom: 10px;
 }
 
 #name {
-    padding: 10px;
-    border: none;
+  padding: 10px;
+  border: none;
 }
 
 .label-names {
-    margin-top: 10px;
-    margin-bottom: -8px;
-
+  margin-top: 10px;
+  margin-bottom: -8px;
 }
 
 #review {
-    height: 100px;
-    padding: 10px;
-    border: none;
+  height: 100px;
+  padding: 10px;
+  border: none;
 }
 
 ::placeholder {
-    padding-left: 5px;
-    color: #8783D1;
+  padding-left: 5px;
+  color: #8783d1;
 }
 
 .submit {
-
-    background-color: #CAFE48;
-    color: #220C10;
-    padding: 10px 80px;
-    font-size: 1.2rem;
-    border: solid #220C10 2px;
-    align-self: center;
-    margin-top: 15px;
+  background-color: #cafe48;
+  color: #220c10;
+  padding: 10px 80px;
+  font-size: 1.2rem;
+  border: solid #220c10 2px;
+  align-self: center;
+  margin-top: 15px;
 }
 
 .submit:hover {
-    background-color: #220C10;
-    color: #CAFE48;
-    font-size: 1.2rem;
-    border: solid #CAFE48 2px;
-    cursor: pointer;
+  background-color: #220c10;
+  color: #cafe48;
+  font-size: 1.2rem;
+  border: solid #cafe48 2px;
+  cursor: pointer;
 }
 
 .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 4px;
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
 }

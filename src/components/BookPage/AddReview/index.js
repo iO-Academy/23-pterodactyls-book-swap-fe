@@ -51,20 +51,21 @@ function Form(props) {
           review: `${review}`,
           book_id: id,
         }),
+
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setName("");
-        setRating("");
-        setReview("");
-        setReviewCharCount(0)
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setName("");
+          setRating("");
+          setReview("");
+          setReviewCharCount(0);
+        });
     }
   }
 
@@ -77,7 +78,9 @@ function Form(props) {
   return (
     <form className="review-form" onSubmit={handleSubmit}>
       <p className="review-title">Please leave a review!</p>
-      <label className='label-names' htmlFor="name">Name</label>
+      <label className="label-names" htmlFor="name">
+        Name
+      </label>
       <input
         placeholder="Name"
         id="name"
@@ -87,7 +90,9 @@ function Form(props) {
       />
       <div className="error-message">{nameError}</div>
 
-      <label className='label-names' htmlFor="rating">Rating (out of 5)</label>
+      <label className="label-names" htmlFor="rating">
+        Rating (out of 5)
+      </label>
       <input
         id="rating"
         type="number"
@@ -96,14 +101,12 @@ function Form(props) {
         value={rating}
         onChange={(e) => setRating(e.target.value)}
       />
-      <div className="error-message">{ratingError}</div> 
+      <div className="error-message">{ratingError}</div>
 
-      <label className='label-names' htmlFor="review">Review</label>
-      <textarea
-        id="review"
-        value={review}
-        onChange={handleReviewChange}
-      />
+      <label className="label-names" htmlFor="review">
+        Review
+      </label>
+      <textarea id="review" value={review} onChange={handleReviewChange} />
       <div className="char-count">
         {reviewCharCount} / {maxReviewLength} characters
       </div>
