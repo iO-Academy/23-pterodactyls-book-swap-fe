@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import BookCard from '../BookCard';
+import SearchBar from '../SearchBar';
 
 
 function HomePage() {
@@ -14,7 +15,10 @@ function HomePage() {
     }, [])
 
     return (
+        <div>
+            <SearchBar />
         <BookCard books={books} />
+        </div>
     )
 }
 
