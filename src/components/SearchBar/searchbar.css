@@ -1,12 +1,10 @@
 .searchbar {
   display: flex;
   width: 200px;
-  height: 1.6rem;
+  height: 1.2rem;
   align-items: center;
   background-color: white;
-  border-radius: 2px;
   box-shadow: 0px 0px 8px #ddd;
-  margin-top: 10px;
   padding: 8px 8px;
 }
 
