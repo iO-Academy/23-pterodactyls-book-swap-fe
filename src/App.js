@@ -8,7 +8,9 @@ import AddBook from "./components/AddBook";
 import { useState } from "react";
 
 function App() {
-  const [claimedUrl, setClaimedUrl] = useState("0");
+  const [claimedUrl, setClaimedUrl] = useState(
+    "https://book-swap-api.dev.io-academy.uk/api/books?claimed=0"
+  );
 
   return (
     <div className="App">
