@@ -4,7 +4,7 @@ import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import BookPage from "./components/BookPage";
 import ClaimedBookPage from "./components/ClaimedBookPage";
-import AddBook from "./components/Nav/AddBook";
+import AddBook from "./components/AddBook";
 
 function App() {
   return (

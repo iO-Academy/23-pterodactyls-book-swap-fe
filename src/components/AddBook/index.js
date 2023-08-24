@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./add-book.css";
 import { Navigate } from "react-router-dom";
 
@@ -10,6 +10,8 @@ function AddBook() {
   const [pageCount, setPageCount] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [blurb, setBlurb] = useState("");
+
+  const [bookGenres, setBookGenres] = useState([]);
 
   const [redirect, setRedirect] = useState(false);
 
@@ -39,30 +41,43 @@ function AddBook() {
     setBlurb(event.target.value);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  useEffect(() => {
+    fetch("https://book-swap-api.dev.io-academy.uk/api/genres")
+      .then((res) => res.json())
+      .then((data) => {
+        setBookGenres(data.data);
+      });
+  }, []);
 
+  function generatePostData() {
     const postData = {
       "title": title,
       "author": author,
       "genre_id": genre,
     };
 
-    if (blurb.length != 0) {
+    if (blurb && blurb.length != 0) {
       postData.blurb = blurb;
     }
 
-    if (imgUrl.length != 0) {
+    if (imgUrl && imgUrl.length != 0) {
       postData.image = imgUrl;
     }
 
-    if (year != 0) {
+    if (year && year != 0) {
       postData.year = year;
     }
 
-    if (pageCount != 0) {
+    if (pageCount && pageCount != 0) {
       postData.page_count = pageCount;
     }
+    return postData;
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const postData = generatePostData();
 
     fetch("https://book-swap-api.dev.io-academy.uk/api/books", {
       method: "POST",
@@ -82,12 +97,10 @@ function AddBook() {
           setTitleErrors(data.errors.title);
           setAuthorErrors(data.errors.author);
           setGenreErrors(data.errors.genre_id);
-          console.log(data);
+        } else {
+          setRedirect(true);
         }
-        setRedirect(true);
       });
-
-    console.log("sucessfully submitted book!");
   }
 
   return (
@@ -118,11 +131,14 @@ function AddBook() {
           placeholder="None selected"
           onChange={changeGenre}
         >
-          <option value="">Select an option</option>
-          <option value="1">Thrlller</option>
-          <option value="2">Romance</option>
-          <option value="3">Historical</option>
-          <option value="4">Non-fiction</option>
+          <option className="dropdown" value={0}>
+            All
+          </option>
+          {bookGenres.map((genre) => (
+            <option className="dropdown" value={genre.id} key={genre.id}>
+              {genre.name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="field">
@@ -153,8 +169,10 @@ function AddBook() {
         />
       </div>
       <div className="field">
+        <label htmlFor="blurb">Blurb</label>
         <textarea
           placeholder="Blurb"
+          name="blurb"
           rows="4"
           cols="50"
           onChange={changeBlurb}
