@@ -43,20 +43,22 @@ function Form(props) {
     }
 
     if (isValid) {
-      fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
-        method: "POST",
-        body: JSON.stringify({
-          name: `${name}`,
-          rating: rating,
-          review: `${review}`,
-          book_id: id,
-        }),
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
+      
+    fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
+      method: "POST",
+      body: JSON.stringify({
+        name: `${name}`,
+        rating: rating,
+        review: `${review}`,
+        book_id: id,
+      }),
+
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -73,7 +75,7 @@ function Form(props) {
   }
 
   const id = props.id;
-
+  
   return (
     <form className="review-form" onSubmit={handleSubmit}>
       <p className="review-title">Please leave a review!</p>

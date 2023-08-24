@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import BookCard from '../BookCard';
 import GenreFilter from '../GenreFilter';
 import './home.css'
+import SearchBar from '../SearchBar';
+
 
 function HomePage() {
     const [books, setBooks] = useState([]);
@@ -37,6 +39,7 @@ function HomePage() {
         <div>
         <div className='search-container'>
         <GenreFilter genreID={genreID} setGenreID={setGenreID}/>
+        <SearchBar />
         </div>
         <div className='flex_container'>
             {books.map((book, index) => (
@@ -47,6 +50,9 @@ function HomePage() {
         </div>
         </div>
     );
+           
+       
+
 }
 
 export default HomePage;
