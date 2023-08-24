@@ -66,6 +66,7 @@ function BookClaimForm(props) {
             placeholder="Name"
             onChange={handleName}
           ></input>
+            <p className="error">{nameErrorMessage}</p>
         </div>
         <div className="input" onChange={handleEmail}>
           <label className="label" htmlFor="email">
@@ -77,14 +78,9 @@ function BookClaimForm(props) {
             id="email"
             placeholder="Email"
           ></input>
+           <p className="error">{emailErrorMessage}</p>     
         </div>
-        <input className="claim-button" type="submit" value="Claim"></input>
-
-    
-          <p className="error">{emailErrorMessage}</p>
-
-          <p className="error">{nameErrorMessage}</p>
-        
+        <input className="claim-button" type="submit" value="Claim"></input>   
       </form>
     </div>
   );

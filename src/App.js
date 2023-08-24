@@ -3,21 +3,21 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import BookPage from "./components/BookPage";
-import ClaimedBooks from "./components/ClaimedBooks";
+import ClaimedBookPage from "./components/ClaimedBookPage";
+import AddBook from "./components/Nav/AddBook";
 
 function App() {
-
   return (
     <div className="App">
       <BrowserRouter>
-       
-          <Nav />
+        <Nav />
 
-          <Routes>
-            <Route path="/book/:id" element={<BookPage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/claimed/" element={<ClaimedBooks />} />
-          </Routes>
+        <Routes>
+          <Route path="/book/:id" element={<BookPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/claimed/" element={<ClaimedBookPage />} />
+          <Route path="/add-book/" element={<AddBook />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

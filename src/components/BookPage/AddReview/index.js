@@ -3,7 +3,7 @@ import "./addreview.css";
 
 function Form(props) {
   const [name, setName] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
   const [nameError, setNameError] = useState("");
   const [ratingError, setRatingError] = useState("");
@@ -32,42 +32,44 @@ function Form(props) {
       isValid = false;
     }
 
+    if (rating === "") {
+      setRatingError("Rating is required");
+      isValid = false;
+    }
+
     if (review.trim() === "") {
       setReviewError("Review is required");
       isValid = false;
     }
 
     if (isValid) {
-      fetch().then().then();
-    }
-
-    fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
-      method: "POST",
-      body: JSON.stringify({
-        name: `${name}`,
-        rating: rating,
-        review: `${review}`,
-        book_id: id,
-      }),
-
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
+      fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
+        method: "POST",
+        body: JSON.stringify({
+          name: `${name}`,
+          rating: rating,
+          review: `${review}`,
+          book_id: id,
+        }),
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setName("");
+        setRating("");
+        setReview("");
+        setReviewCharCount(0)
       });
+    }
   }
 
   function changeName(event) {
     setName(event.target.value);
-  }
-
-  function changeRating(event) {
-    setRating(event.target.value);
   }
 
   const id = props.id;
@@ -75,7 +77,7 @@ function Form(props) {
   return (
     <form className="review-form" onSubmit={handleSubmit}>
       <p className="review-title">Please leave a review!</p>
-      <label htmlFor="name">Name</label>
+      <label className='label-names' htmlFor="name">Name</label>
       <input
         placeholder="Name"
         id="name"
@@ -85,21 +87,22 @@ function Form(props) {
       />
       <div className="error-message">{nameError}</div>
 
-      <label htmlFor="rating">Rating (out of 5)</label>
+      <label className='label-names' htmlFor="rating">Rating (out of 5)</label>
       <input
         id="rating"
         type="number"
-        min="0"
+        min="1"
         max="5"
         value={rating}
-        onChange={changeRating}
+        onChange={(e) => setRating(e.target.value)}
       />
+      <div className="error-message">{ratingError}</div> 
 
-      <label htmlFor="review">Review</label>
+      <label className='label-names' htmlFor="review">Review</label>
       <textarea
         id="review"
         value={review}
-        onChange={handleReviewChange} 
+        onChange={handleReviewChange}
       />
       <div className="char-count">
         {reviewCharCount} / {maxReviewLength} characters
@@ -111,4 +114,3 @@ function Form(props) {
 }
 
 export default Form;
-
