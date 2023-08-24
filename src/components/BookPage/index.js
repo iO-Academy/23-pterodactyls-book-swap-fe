@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./book-page.css";
 import BookClaimForm from "../BookClaimForm";
 import BookReturnForm from "../BookReturnForm";
-import AddReview from "./AddReview"
+import AddReviewForm from "./AddReviewForm"
 
 function BookPage() {
   const [title, setTitle] = useState("");
@@ -48,6 +48,8 @@ function BookPage() {
       })
       .catch((error) => console.error("Error fetching data", error));
   }, [id]);
+  function handleReviewSubmit(newReview) {
+    setReviews([...reviews, newReview])}
 
   return (
     <div className="container">
@@ -77,7 +79,7 @@ function BookPage() {
          
 
           <p>{blurb}</p>
-          <AddReview id={id}/>
+          <AddReviewForm id={id} onReviewSubmit={handleReviewSubmit}/>
           <ul>
             {reviews.map((review, index) => (
               <li key={index}>

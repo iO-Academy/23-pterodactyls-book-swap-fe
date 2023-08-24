@@ -24,17 +24,24 @@ a:link{
 
 @media screen and (max-width: 800px) {
     .navBar {
-    justify-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        /* flex-wrap: wrap; */
+        height: auto;
     }
 
     a:link {
-        font-size: 1.2rem;
+        font-size: 1.7rem;
     }
 
     .right-links a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         font-size: 1rem;
+        padding-bottom: 0;
     }
 }
