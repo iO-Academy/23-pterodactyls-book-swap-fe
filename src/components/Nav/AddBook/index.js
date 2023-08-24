@@ -119,10 +119,10 @@ function AddBook() {
           onChange={changeGenre}
         >
           <option value="">Select an option</option>
-          <option value="1">Nesciunt omnis</option>
-          <option value="2">Voluptas ducimus</option>
-          <option value="3">Qui inventore</option>
-          <option value="4">Sed corporis</option>
+          <option value="1">Thrlller</option>
+          <option value="2">Romance</option>
+          <option value="3">Historical</option>
+          <option value="4">Non-fiction</option>
         </select>
       </div>
       <div className="field">
