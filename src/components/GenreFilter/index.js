@@ -15,9 +15,12 @@ function GenreFilter(props) {
 
 
     function setGenre(event){
-
-        props.setGenreID(event.target.value)
+        if(props.setGenreID){
+        props.setGenreID(event.target.value)}
+        else if (props.ClaimedGenreID){
+        props.setClaimedGenreID(event.target.value)}
     }
+
 
  return(
     <div className='container'>
