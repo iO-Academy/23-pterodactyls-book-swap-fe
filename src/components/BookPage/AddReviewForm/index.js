@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./addreview.css";
 
-function Form(props) {
+function AddReviewForm(props) {
   const [name, setName] = useState("");
   const [rating, setRating] = useState("");
   const [review, setReview] = useState("");
@@ -10,6 +10,11 @@ function Form(props) {
   const [reviewError, setReviewError] = useState("");
   const [reviewCharCount, setReviewCharCount] = useState(0);
   const maxReviewLength = 450;
+
+  function handleInputChange(event, setState) {
+    const newValue = event.target.value;
+    setState(newValue);
+  }
 
   function handleReviewChange(event) {
     const newReview = event.target.value;
@@ -21,63 +26,47 @@ function Form(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setNameError("");
-    setRatingError("");
-    setReviewError("");
 
-    let isValid = true;
-
-    if (name.trim() === "") {
-      setNameError("Name field is required");
-      isValid = false;
-    }
-
-    if (rating === "") {
-      setRatingError("Rating field is required");
-      isValid = false;
-    }
-
-    if (review.trim() === "") {
-      setReviewError("Review field is required");
-      isValid = false;
-    }
-
-    if (isValid) {
-      fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
-        method: "POST",
-        body: JSON.stringify({
-          name: `${name}`,
-          rating: rating,
-          review: `${review}`,
-          book_id: id,
-        }),
-
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
+    fetch("https://book-swap-api.dev.io-academy.uk/api/reviews", {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        rating: rating,
+        review: review,
+        book_id: props.id,
+      }),
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.errors) {
+          setNameError(data.errors.name);
+          setRatingError(data.errors.rating);
+          setReviewError(data.errors.review);
+        } else {
+          setNameError("");
+          setRatingError("");
+          setReviewError("");
           setName("");
           setRating("");
           setReview("");
           setReviewCharCount(0);
-        });
-    }
+          props.onReviewSubmit({
+            name: name,
+            rating: rating,
+            review: review,
+          });
+        }
+      });
   }
-
-  function changeName(event) {
-    setName(event.target.value);
-  }
-
-  const id = props.id;
 
   return (
     <form className="review-form" onSubmit={handleSubmit}>
-      <p className="review-title">Want to review this books?</p>
+      <p className="review-title">Want to review this book?</p>
       <label className="label-names" htmlFor="name">
         Name
       </label>
@@ -86,7 +75,7 @@ function Form(props) {
         id="name"
         type="text"
         value={name}
-        onChange={changeName}
+        onChange={(e) => handleInputChange(e, setName)}
       />
       <div className="error-message">{nameError}</div>
 
@@ -99,21 +88,25 @@ function Form(props) {
         min="1"
         max="5"
         value={rating}
-        onChange={(e) => setRating(e.target.value)}
+        onChange={(e) => handleInputChange(e, setRating)}
       />
       <div className="error-message">{ratingError}</div>
 
       <label className="label-names" htmlFor="review">
         Review
       </label>
-      <textarea id="review" value={review} onChange={handleReviewChange} />
+      <textarea
+        id="review"
+        value={review}
+        onChange={handleReviewChange}
+      />
       <div className="char-count">
         {reviewCharCount} / {maxReviewLength} characters
       </div>
       <div className="error-message">{reviewError}</div>
-      <input className="submit" type="submit" value='Review'/>
+      <input className="submit" type="submit" value="Review" />
     </form>
   );
 }
 
-export default Form;
+export default AddReviewForm;
