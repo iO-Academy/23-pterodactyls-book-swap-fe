@@ -28,17 +28,17 @@ function Form(props) {
     let isValid = true;
 
     if (name.trim() === "") {
-      setNameError("Name is required");
+      setNameError("Name field is required");
       isValid = false;
     }
 
     if (rating === "") {
-      setRatingError("Rating is required");
+      setRatingError("Rating field is required");
       isValid = false;
     }
 
     if (review.trim() === "") {
-      setReviewError("Review is required");
+      setReviewError("Review field is required");
       isValid = false;
     }
 
