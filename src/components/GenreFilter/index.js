@@ -23,7 +23,6 @@ function GenreFilter(props) {
     <div className='container'>
         <label htmlFor='genreId'>Filter by genre:</label>
         <select className='dropdown' id='genreId' onChange={setGenre}>
-        <option className='dropdown'>Select...</option>
             <option className='dropdown'value={0}>All</option>
             {bookGenres.map(genre => 
         <option className='dropdown' value={genre.id} key={genre.id}>{genre.name}</option>)}
