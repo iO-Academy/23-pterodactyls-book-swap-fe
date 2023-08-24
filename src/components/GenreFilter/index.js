@@ -15,15 +15,17 @@ function GenreFilter(props) {
 
 
     function setGenre(event){
-
-        props.setGenreID(event.target.value)
+        if(props.setGenreID){
+        props.setGenreID(event.target.value)}
+        else if (props.ClaimedGenreID){
+        props.setClaimedGenreID(event.target.value)}
     }
+
 
  return(
     <div className='container'>
         <label htmlFor='genreId'>Filter by genre:</label>
         <select className='dropdown' id='genreId' onChange={setGenre}>
-        <option className='dropdown'>Select...</option>
             <option className='dropdown'value={0}>All</option>
             {bookGenres.map(genre => 
         <option className='dropdown' value={genre.id} key={genre.id}>{genre.name}</option>)}
