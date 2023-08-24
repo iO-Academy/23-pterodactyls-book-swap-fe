@@ -6,9 +6,9 @@ function Nav() {
     <nav className="navBar">
       <a href="/">Books Swap</a>
       <div className="right-links">
-        <Link href="/">Available books</Link>
-        <Link href="/claimed">Claimed books</Link>
-        <Link href="/add-book">Add book</Link>
+        <Link to="/">Available books</Link>
+        <Link to="/claimed/">Claimed books</Link>
+        <Link to="/add-book">Add book</Link>
       </div>
     </nav>
   );
