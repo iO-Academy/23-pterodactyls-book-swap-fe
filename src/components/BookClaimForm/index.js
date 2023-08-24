@@ -78,9 +78,9 @@ function BookClaimForm(props) {
             id="email"
             placeholder="Email"
           ></input>
+           <p className="error">{emailErrorMessage}</p>     
         </div>
-        <input className="claim-button" type="submit" value="Claim"></input>
-          <p className="error">{emailErrorMessage}</p>      
+        <input className="claim-button" type="submit" value="Claim"></input>   
       </form>
     </div>
   );
