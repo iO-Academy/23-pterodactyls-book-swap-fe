@@ -10,7 +10,7 @@ function ClaimedBookPage() {
   const [claimedSearch, setClaimedSearch] = useState("");
 
   useEffect(() => {
-    let url = "https://book-swap-api.dev.io-academy.uk/api/books?claimed=0";
+    let url = "https://book-swap-api.dev.io-academy.uk/api/books?claimed=1";
 
     if (claimedGenreID > 0) {
       url += `&genre=${claimedGenreID}`;
