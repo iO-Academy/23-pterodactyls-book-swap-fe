@@ -3,37 +3,36 @@ import { Link } from "react-router-dom";
 import BookCard from "../BookCard";
 import GenreFilter from "../GenreFilter";
 import "./home.css";
+import SearchBar from "../SearchBar";
 
 function HomePage() {
   const [books, setBooks] = useState([]);
   const [genreID, setGenreID] = useState(0);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    if (genreID > 0) {
-      fetch(
-        "https://book-swap-api.dev.io-academy.uk/api/books?claimed=0" +
-          "&genre=" +
-          genreID
-      )
-        .then((res) => res.json())
-        .then((bookData) => {
-          setBooks(bookData.data);
-        });
-    } else {
-      fetch("https://book-swap-api.dev.io-academy.uk/api/books?claimed=0")
-        .then((res) => res.json())
-        .then((bookData) => {
-          setBooks(bookData.data);
-        });
-    }
-  }, [genreID]);
+    let url = "https://book-swap-api.dev.io-academy.uk/api/books?claimed=0";
 
-  console.log(genreID);
+    if (genreID > 0) {
+      url += `&genre=${genreID}`;
+    }
+
+    if (search.length > 0) {
+      url += `&search=${search}`;
+    }
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((bookData) => {
+        setBooks(bookData.data);
+      });
+  }, [genreID, search]);
 
   return (
     <div>
       <div className="search-container">
         <GenreFilter genreID={genreID} setGenreID={setGenreID} />
+        <SearchBar search={search} setSearch={setSearch} />
       </div>
       <div className="flex_container">
         {books.map((book, index) => (
