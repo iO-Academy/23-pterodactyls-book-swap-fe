@@ -12,7 +12,7 @@ function Nav(props) {
 
   return (
     <nav className="navBar">
-      <a href="/">Books Swap</a>
+      <a href="/" className="bookSwap">Books Swap</a>
       <div className="right-links">
         <Link onClick={handleAvailableClick}>Available books</Link>
         <Link onClick={handleClaimedClick}>Claimed Book</Link>
