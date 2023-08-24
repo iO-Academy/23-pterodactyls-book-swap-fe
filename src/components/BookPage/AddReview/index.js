@@ -110,7 +110,7 @@ function Form(props) {
         {reviewCharCount} / {maxReviewLength} characters
       </div>
       <div className="error-message">{reviewError}</div>
-      <input className="submit" type="submit" />
+      <input className="submit" type="submit" value='Review'/>
     </form>
   );
 }
