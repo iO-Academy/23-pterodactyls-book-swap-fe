@@ -3,19 +3,21 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import Nav from "./components/Nav";
 import BookPage from "./components/BookPage";
-import ClaimedBookPage from "./components/ClaimedBookPage";
+// import ClaimedBookPage from "./components/ClaimedBookPage";
 import AddBook from "./components/AddBook";
+import { useState } from "react";
 
 function App() {
+  const [claimedUrl, setClaimedUrl] = useState("0");
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <Nav setClaimedUrl={setClaimedUrl} claimedUrl={claimedUrl} />
 
         <Routes>
           <Route path="/book/:id" element={<BookPage />} />
-          <Route path="/" element={<HomePage />} />
-          <Route path="/claimed/" element={<ClaimedBookPage />} />
+          <Route path="/" element={<HomePage claimedUrl={claimedUrl} />} />
           <Route path="/add-book/" element={<AddBook />} />
         </Routes>
       </BrowserRouter>

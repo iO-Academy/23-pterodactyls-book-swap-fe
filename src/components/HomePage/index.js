@@ -5,13 +5,15 @@ import GenreFilter from "../GenreFilter";
 import "./home.css";
 import SearchBar from "../SearchBar";
 
-function HomePage() {
+function HomePage(props) {
   const [books, setBooks] = useState([]);
   const [genreID, setGenreID] = useState(0);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    let url = "https://book-swap-api.dev.io-academy.uk/api/books?claimed=0";
+    let url =
+      "https://book-swap-api.dev.io-academy.uk/api/books?claimed=" +
+      props.claimedUrl;
 
     if (genreID > 0) {
       url += `&genre=${genreID}`;
@@ -26,7 +28,7 @@ function HomePage() {
       .then((bookData) => {
         setBooks(bookData.data);
       });
-  }, [genreID, search]);
+  }, [genreID, search, props.claimedUrl]);
 
   return (
     <div>
