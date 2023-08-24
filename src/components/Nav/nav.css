@@ -26,6 +26,7 @@ a:link{
     .navBar {
     justify-items: center;
     flex-wrap: wrap;
+    flex-direction: column;
     height: 50px;
     }
 

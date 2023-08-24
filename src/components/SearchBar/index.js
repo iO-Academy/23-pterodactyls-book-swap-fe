@@ -15,7 +15,7 @@ function SearchBar(props) {
 
   return (
     <div className="searchbar">
-      <FaSearch id="search-icon" onClick={handleSubmit} />
+      <FaSearch id="search-icon" onClick={handleSubmit}/>
       <input
         id="search-input"
         type="input"
