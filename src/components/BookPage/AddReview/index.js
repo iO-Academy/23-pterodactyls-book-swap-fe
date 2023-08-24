@@ -77,7 +77,7 @@ function Form(props) {
 
   return (
     <form className="review-form" onSubmit={handleSubmit}>
-      <p className="review-title">Please leave a review!</p>
+      <p className="review-title">Want to review this books?</p>
       <label className="label-names" htmlFor="name">
         Name
       </label>
@@ -111,7 +111,7 @@ function Form(props) {
         {reviewCharCount} / {maxReviewLength} characters
       </div>
       <div className="error-message">{reviewError}</div>
-      <input className="submit" type="submit" />
+      <input className="submit" type="submit" value='Review'/>
     </form>
   );
 }
