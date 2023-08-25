@@ -5,17 +5,14 @@ import { useState } from "react";
 function SearchBar(props) {
   const [input, setInput] = useState("");
 
-  function handleSubmit() {
-    props.setSearch(input);
-  }
-
   function handleChange(event) {
     setInput(event.target.value);
+    props.setSearch(input);
   }
 
   return (
     <div className="searchbar">
-      <FaSearch id="search-icon" onClick={handleSubmit}/>
+      <FaSearch id="search-icon" />
       <input
         id="search-input"
         type="input"
