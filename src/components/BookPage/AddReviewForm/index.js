@@ -16,6 +16,16 @@ function AddReviewForm(props) {
     setState(newValue);
   }
 
+  function clearForm() {
+          setNameError("");
+          setRatingError("");
+          setReviewError("");
+          setName("");
+          setRating("");
+          setReview("");
+          setReviewCharCount(0);
+
+  }
   function handleReviewChange(event) {
     const newReview = event.target.value;
     if (newReview.length <= maxReviewLength) {
@@ -48,13 +58,7 @@ function AddReviewForm(props) {
           setRatingError(data.errors.rating);
           setReviewError(data.errors.review);
         } else {
-          setNameError("");
-          setRatingError("");
-          setReviewError("");
-          setName("");
-          setRating("");
-          setReview("");
-          setReviewCharCount(0);
+         clearForm()
           props.onReviewSubmit({
             name: name,
             rating: rating,
