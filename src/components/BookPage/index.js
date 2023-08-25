@@ -21,7 +21,7 @@ function BookPage() {
 
   const { id } = useParams("");
 
-  useEffect(() => {
+  function fetchBookData() {
     fetch("https://book-swap-api.dev.io-academy.uk/api/books/" + id)
       .then((res) => res.json())
       .then((info) => {
@@ -47,9 +47,14 @@ function BookPage() {
         console.log(info.data.reviews.length);
       })
       .catch((error) => console.error("Error fetching data", error));
-  }, [id]);
+  }
+  useEffect(() => {
+    fetchBookData()
+  }, [id])
   function handleReviewSubmit(newReview) {
-    setReviews([...reviews, newReview])}
+    setReviews([...reviews, newReview])
+    fetchBookData()
+  }
 
   return (
     <div className="container">
@@ -68,18 +73,18 @@ function BookPage() {
             {reviewsNum} reviews - {reviewsAvg}/5 stars
           </p>
 
-          {claimedBy == null ? 
-            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />: 
+          {claimedBy == null ?
+            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} /> :
             <>
-            <p className="claimed">claimed by {claimedBy}</p>
-            <BookReturnForm />
+              <p className="claimed">claimed by {claimedBy}</p>
+              <BookReturnForm />
             </>
           }
 
-         
+
 
           <p>{blurb}</p>
-          <AddReviewForm id={id} onReviewSubmit={handleReviewSubmit}/>
+          <AddReviewForm id={id} onReviewSubmit={handleReviewSubmit} />
           <ul>
             {reviews.map((review, index) => (
               <li key={index}>
