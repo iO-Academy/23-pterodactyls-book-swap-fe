@@ -36,7 +36,7 @@ function HomePage(props) {
       </div>
       <div className="flex_container">
         {books.map((book, index) => (
-          <Link key={index} to={`/Book/${book.id}`}>
+          <Link className='book-links' key={index} to={`/Book/${book.id}`}>
             <BookCard book={book} />
           </Link>
         ))}
