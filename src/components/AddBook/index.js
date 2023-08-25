@@ -18,27 +18,13 @@ function AddBook() {
   const [titleErrors, setTitleErrors] = useState("");
   const [authorErrors, setAuthorErrors] = useState("");
   const [genreErrors, setGenreErrors] = useState("");
+  const [blurbErrors, setBlurbErrors] = useState("");
+  const [imgErrors, setImgErrors] = useState("");
+  const [yearErrors, setYearErrors] = useState("");
 
-  function changeTitle(event) {
-    setTitle(event.target.value);
-  }
-  function changeAuthor(event) {
-    setAuthor(event.target.value);
-  }
-  function changeGenre(event) {
-    setGenre(event.target.value);
-  }
-  function changeYear(event) {
-    setYear(event.target.value);
-  }
-  function changePageCount(event) {
-    setPageCount(event.target.value);
-  }
-  function changeImgUrl(event) {
-    setImgUrl(event.target.value);
-  }
-  function changeBlurb(event) {
-    setBlurb(event.target.value);
+  function handelInputChange(event, setState) {
+    const newValue = event.target.value;
+    setState(newValue);
   }
 
   useEffect(() => {
@@ -97,6 +83,9 @@ function AddBook() {
           setTitleErrors(data.errors.title);
           setAuthorErrors(data.errors.author);
           setGenreErrors(data.errors.genre_id);
+          setBlurbErrors(data.errors.blurb);
+          setImgErrors(data.errors.image);
+          setYearErrors(data.errors.year);
         } else {
           setRedirect(true);
         }
@@ -111,7 +100,7 @@ function AddBook() {
           type="input"
           name="title"
           placeholder="Title"
-          onChange={changeTitle}
+          onChange={(e) => handelInputChange(e, setTitle)}
         />
       </div>
       <div className="field">
@@ -120,7 +109,7 @@ function AddBook() {
           type="input"
           name="author"
           placeholder="Author"
-          onChange={changeAuthor}
+          onChange={(e) => handelInputChange(e, setAuthor)}
         />
       </div>
       <div className="field">
@@ -129,7 +118,7 @@ function AddBook() {
           type="input"
           name="genre"
           placeholder="None selected"
-          onChange={changeGenre}
+          onChange={(e) => handelInputChange(e, setGenre)}
         >
           <option className="dropdown" value={0}>
             All
@@ -147,7 +136,7 @@ function AddBook() {
           type="input"
           name="year"
           placeholder="2000"
-          onChange={changeYear}
+          onChange={(e) => handelInputChange(e, setYear)}
         />
       </div>
       <div className="field">
@@ -156,7 +145,7 @@ function AddBook() {
           type="input"
           name="page-count"
           placeholder="0"
-          onChange={changePageCount}
+          onChange={(e) => handelInputChange(e, setPageCount)}
         />
       </div>
       <div className="field">
@@ -165,7 +154,7 @@ function AddBook() {
           type="input"
           name="img-url"
           placeholder="Image URL"
-          onChange={changeImgUrl}
+          onChange={(e) => handelInputChange(e, setImgUrl)}
         />
       </div>
       <div className="field">
@@ -175,7 +164,7 @@ function AddBook() {
           name="blurb"
           rows="4"
           cols="50"
-          onChange={changeBlurb}
+          onChange={(e) => handelInputChange(e, setBlurb)}
         ></textarea>
       </div>
       <div className="field">
