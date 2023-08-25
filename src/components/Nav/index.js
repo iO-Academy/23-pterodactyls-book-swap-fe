@@ -3,20 +3,18 @@ import "./nav.css";
 
 function Nav(props) {
   function handleAvailableClick() {
-    props.setClaimedUrl(
-      "https://book-swap-api.dev.io-academy.uk/api/books?claimed=0"
-    );
+    props.setClaimedUrl(0);
   }
 
   function handleClaimedClick() {
-    props.setClaimedUrl(
-      "https://book-swap-api.dev.io-academy.uk/api/books?claimed=1"
-    );
+    props.setClaimedUrl(1);
   }
 
   return (
     <nav className="navBar">
-      <a href="/" className="bookSwap">Books Swap</a>
+      <a href="/" className="bookSwap">
+        Books Swap
+      </a>
       <div className="right-links">
         <Link to="/" onClick={handleAvailableClick}>
           Available books

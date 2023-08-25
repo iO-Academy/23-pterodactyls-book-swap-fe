@@ -11,7 +11,9 @@ function HomePage(props) {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    let url = props.claimedUrl;
+    let url =
+      "https://book-swap-api.dev.io-academy.uk/api/books?claimed=" +
+      props.claimedUrl;
 
     if (genreID > 0) {
       url += `&genre=${genreID}`;
