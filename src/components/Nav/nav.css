@@ -30,6 +30,13 @@ a:link{
 
 }
 
+#homepage{
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: #220C10;
+    text-decoration-thickness: 3px;
+}
+
 
 .bookSwap{
     color: #220C10;

@@ -136,6 +136,7 @@ function AddBook() {
       <div className="field">
         <label htmlFor="blurb">Blurb</label>
         <textarea
+        className="text-area"
           placeholder="Blurb"
           name="blurb"
           rows="4"

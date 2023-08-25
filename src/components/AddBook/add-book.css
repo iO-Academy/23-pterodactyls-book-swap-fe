@@ -18,7 +18,17 @@
 }
 
 input {
-  padding: 7px 0;
+  border: none;
+  padding: 10px 0px;
+  font-size: 1.2rem;
+}
+
+.text-area{
+  border: none;
+  padding: 10px 0px;
+  font-size: 1.2rem;
+  font-family: Raleway;
+  font-weight: 500;
 }
 
 input::placeholder {
@@ -28,9 +38,20 @@ input::placeholder {
 }
 
 .submit-button {
-  margin: 0 auto;
-  width: 100%;
-  padding: 7px 0;
+  background-color: #CAFE48;
+  color: #220C10;
+  padding: 10px 0px;
+  font-size: 1.2rem;
+  border: solid #220C10 2px;
+}
+
+.submit-button:hover{
+  background-color: #220C10;
+  color: #CAFE48;
+  padding: 10px 0px;
+  font-size: 1.2rem;
+  border: solid #CAFE48 2px;
+  cursor: pointer;
 }
 
 .errors {
@@ -41,4 +62,6 @@ input::placeholder {
 
 .errors p {
   color: red;
+  font-size: 1rem;
+  margin-top: 4px;
 }
