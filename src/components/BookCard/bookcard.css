@@ -5,6 +5,7 @@
     gap: 3rem;
     font-family: Raleway;
     padding-top: 90px;
+    margin-bottom: 45px;
 }
 
 .card {
@@ -22,6 +23,7 @@
 .text_container {
     display: flex;
     flex-direction: column;
+    color: #220C10;
 }
 
 .book_title {
