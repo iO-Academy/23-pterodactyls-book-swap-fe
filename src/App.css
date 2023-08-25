@@ -2,3 +2,7 @@ body{
   background-color: #D7D6D6;
   font-family: 'Raleway', sans-serif;
 }
+
+a:active{
+  color: black;
+}

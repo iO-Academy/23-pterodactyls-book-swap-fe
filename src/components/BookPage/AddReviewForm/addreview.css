@@ -61,7 +61,8 @@
 .error-message {
   color: red;
   font-size: 14px;
-  margin-top: 4px;
+  margin-top: -6px;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 900px) { 

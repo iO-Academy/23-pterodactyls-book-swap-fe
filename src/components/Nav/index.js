@@ -1,27 +1,15 @@
 import { Link } from "react-router-dom";
 import "./nav.css";
 
-function Nav(props) {
-  function handleAvailableClick() {
-    props.setClaimedUrl(0);
-  }
-
-  function handleClaimedClick() {
-    props.setClaimedUrl(1);
-  }
-
+function Nav() {
   return (
     <nav className="navBar">
       <a href="/" className="bookSwap">
         Books Swap
       </a>
       <div className="right-links">
-        <Link to="/" onClick={handleAvailableClick}>
-          Available books
-        </Link>
-        <Link to="/" onClick={handleClaimedClick}>
-          Claimed Book
-        </Link>
+        <Link to="/available/">Available books</Link>
+        <Link to="/claimed/">Claimed Book</Link>
         <Link to="/add-book">Add book</Link>
       </div>
     </nav>

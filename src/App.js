@@ -17,7 +17,9 @@ function App() {
 
         <Routes>
           <Route path="/book/:id" element={<BookPage />} />
-          <Route path="/" element={<HomePage claimedUrl={claimedUrl} />} />
+          <Route path="/" element={<HomePage claimedUrl={0} />} />
+          <Route path="/available/" element={<HomePage claimedUrl={0} />} />
+          <Route path="/claimed/" element={<HomePage claimedUrl={1} />} />
           <Route path="/add-book/" element={<AddBook />} />
         </Routes>
       </BrowserRouter>

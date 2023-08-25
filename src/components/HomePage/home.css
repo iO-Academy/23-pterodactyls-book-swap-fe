@@ -15,3 +15,8 @@
   }
 
 }
+
+.book-links:visited {
+  text-decoration: none;
+  color: #220C10;
+}
