@@ -174,6 +174,9 @@ function AddBook() {
         <p>{titleErrors}</p>
         <p>{authorErrors}</p>
         <p>{genreErrors}</p>
+        <p>{blurbErrors}</p>
+        <p>{imgErrors}</p>
+        <p>{yearErrors}</p>
       </div>
 
       {redirect && <Navigate replace to="/" />}
