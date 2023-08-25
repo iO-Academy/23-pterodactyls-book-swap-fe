@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./add-book.css";
 import { Navigate } from "react-router-dom";
+import GenreDropdown from "./GenreDropdown";
 
 function AddBook() {
   const [title, setTitle] = useState("");
@@ -10,8 +11,6 @@ function AddBook() {
   const [pageCount, setPageCount] = useState("");
   const [imgUrl, setImgUrl] = useState("");
   const [blurb, setBlurb] = useState("");
-
-  const [bookGenres, setBookGenres] = useState([]);
 
   const [redirect, setRedirect] = useState(false);
 
@@ -26,14 +25,6 @@ function AddBook() {
     const newValue = event.target.value;
     setState(newValue);
   }
-
-  useEffect(() => {
-    fetch("https://book-swap-api.dev.io-academy.uk/api/genres")
-      .then((res) => res.json())
-      .then((data) => {
-        setBookGenres(data.data);
-      });
-  }, []);
 
   function generatePostData() {
     const postData = {
@@ -113,22 +104,7 @@ function AddBook() {
         />
       </div>
       <div className="field">
-        <label htmlFor="genre">Genre (required)</label>
-        <select
-          type="input"
-          name="genre"
-          placeholder="None selected"
-          onChange={(e) => handelInputChange(e, setGenre)}
-        >
-          <option className="dropdown" value={0}>
-            All
-          </option>
-          {bookGenres.map((genre) => (
-            <option className="dropdown" value={genre.id} key={genre.id}>
-              {genre.name}
-            </option>
-          ))}
-        </select>
+        <GenreDropdown genre={genre} setGenre={setGenre} />
       </div>
       <div className="field">
         <label htmlFor="year">Year</label>
