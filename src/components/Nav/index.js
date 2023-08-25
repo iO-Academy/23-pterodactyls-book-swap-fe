@@ -9,7 +9,7 @@ function Nav() {
       </a>
       <div className="right-links">
         <NavLink to="/available/">Available books</NavLink>
-        <NavLink to="/claimed/">Claimed Book</NavLink>
+        <NavLink to="/claimed/">Claimed Books</NavLink>
         <NavLink to="/add-book">Add book</NavLink>
       </div>
     </nav>
