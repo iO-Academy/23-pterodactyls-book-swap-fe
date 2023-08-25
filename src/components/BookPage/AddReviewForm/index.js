@@ -24,8 +24,8 @@ function AddReviewForm(props) {
           setRating("");
           setReview("");
           setReviewCharCount(0);
-
   }
+
   function handleReviewChange(event) {
     const newReview = event.target.value;
     if (newReview.length <= maxReviewLength) {
@@ -51,6 +51,7 @@ function AddReviewForm(props) {
         Accept: "application/json",
       },
     })
+    
       .then((res) => res.json())
       .then((data) => {
         if (data.errors) {
