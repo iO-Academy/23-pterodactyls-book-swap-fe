@@ -57,7 +57,7 @@ function BookPage() {
   }
 
   return (
-    <div className="container">
+    <div className="bookPageContainer">
       <div className="bookpage">
         <div className="lef-col">
           <img src={img} width="300px"></img>
@@ -80,8 +80,6 @@ function BookPage() {
               <BookReturnForm />
             </>
           }
-
-
 
           <p>{blurb}</p>
           <AddReviewForm id={id} onReviewSubmit={handleReviewSubmit} />

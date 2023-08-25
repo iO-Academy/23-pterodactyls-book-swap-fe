@@ -1,4 +1,4 @@
-.container{
+.bookPageContainer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,7 +49,7 @@ h1{
      
         grid-template-columns: 1fr;
         margin: 50px 150px;
-        width: 1000px;
+        width: 100%;
         gap: 20px;
     }
 
@@ -63,6 +63,4 @@ h1{
         align-content: start;
     
     }
-
-  
 }
