@@ -69,9 +69,9 @@ function BookPage() {
           <p>{pages}</p>
           <p>{genre}</p>
 
-          <p>
-            {reviewsNum} reviews - {reviewsAvg}/5 stars
-          </p>
+          
+           <a id='review-scores' href='#reviews'> <u>{reviewsNum} reviews</u> - {reviewsAvg}/5 stars</a>
+          
 
           {claimedBy == null ?
             <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} /> :
@@ -90,7 +90,7 @@ function BookPage() {
                   <strong>{review.name}</strong>
                 </p>
                 <p className="score">Score: {review.rating}/5 stars</p>
-                <p>{review.review}</p>
+                <p id="reviews" >{review.review}</p>
               </li>
             ))}
           </ul>

@@ -30,7 +30,7 @@
     align-content: end;
 }
 
-p{
+p, #review-scores {
     text-align: left;
     margin: 4px 0;
     font-size: 1.2rem;
