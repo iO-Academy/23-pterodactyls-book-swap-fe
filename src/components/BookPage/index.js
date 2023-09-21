@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./book-page.css";
 import BookClaimForm from "../BookClaimForm";
 import BookReturnForm from "../BookReturnForm";
+import AddReviewForm from "./AddReviewForm"
 
 function BookPage() {
   const [title, setTitle] = useState("");
@@ -20,7 +21,7 @@ function BookPage() {
 
   const { id } = useParams("");
 
-  useEffect(() => {
+  function fetchBookData() {
     fetch("https://book-swap-api.dev.io-academy.uk/api/books/" + id)
       .then((res) => res.json())
       .then((info) => {
@@ -46,10 +47,17 @@ function BookPage() {
         console.log(info.data.reviews.length);
       })
       .catch((error) => console.error("Error fetching data", error));
-  }, [id]);
+  }
+  useEffect(() => {
+    fetchBookData()
+  }, [id])
+  function handleReviewSubmit(newReview) {
+    setReviews([...reviews, newReview])
+    fetchBookData()
+  }
 
   return (
-    <div className="container">
+    <div className="bookPageContainer">
       <div className="bookpage">
         <div className="lef-col">
           <img src={img} width="300px"></img>
@@ -61,21 +69,20 @@ function BookPage() {
           <p>{pages}</p>
           <p>{genre}</p>
 
-          <p>
-            {reviewsNum} reviews - {reviewsAvg}/5 stars
-          </p>
+          
+           <a id='review-scores' href='#reviews'> <u>{reviewsNum} reviews</u> - {reviewsAvg}/5 stars</a>
+          
 
-          {claimedBy == null ? 
-            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} />: 
+          {claimedBy == null ?
+            <BookClaimForm claimedBy={claimedBy} setClaimedBy={setClaimedBy} /> :
             <>
-            <p className="claimed">claimed by {claimedBy}</p>
-            <BookReturnForm />
+              <p className="claimed">claimed by {claimedBy}</p>
+              <BookReturnForm />
             </>
           }
 
-         
-
           <p>{blurb}</p>
+          <AddReviewForm id={id} onReviewSubmit={handleReviewSubmit} />
           <ul>
             {reviews.map((review, index) => (
               <li key={index}>
@@ -83,7 +90,7 @@ function BookPage() {
                   <strong>{review.name}</strong>
                 </p>
                 <p className="score">Score: {review.rating}/5 stars</p>
-                <p>{review.review}</p>
+                <p id="reviews" >{review.review}</p>
               </li>
             ))}
           </ul>
